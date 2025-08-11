@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stroke Care</title>
+  <link rel="stylesheet" href="styles22.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Language Select -->
+    <section id="screen-lang" class="screen active">
+      <header class="brand">
+        <div class="logo">🧠</div>
+        <h1>Stroke care</h1>
+        <p class="tagline" data-i18n="tagline">พร้อมดูแลคุณ…</p>
+      </header>
+
+      <h2 class="center" data-i18n="chooseLanguage">เลือกภาษา</h2>
+      <div class="stack">
+        <button class="btn" data-set-lang="th">ภาษาไทย</button>
+        <button class="btn" data-set-lang="en">English</button>
+      </div>
+      <p class="hint small" data-i18n="langNote">
+        (สามารถเปลี่ยนภาษาได้ภายหลังที่มุมบนขวา)
+      </p>
+    </section>
+
+    <!-- Main Menu -->
+    <section id="screen-menu" class="screen">
+      <header class="brand">
+        <div class="logo">🧠</div>
+        <h1>Stroke care</h1>
+        <p class="tagline" data-i18n="tagline">พร้อมดูแลคุณ…</p>
+        <div class="lang-switch">
+          <select id="langSelect">
+            <option value="th">ไทย</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </header>
+
+      <p class="lead center" data-i18n="menuLead">
+        ไม่ต้องรอให้เกิดก่อนถึงจะเข้าใจสโตรก เรียนรู้ตอนนี้ เพื่อช่วยชีวิตได้ทันเวลา
+      </p>
+
+      <div class="grid2">
+        <button id="btnStartRisk" class="card">
+          <span class="card-title" data-i18n="riskForm">แบบประเมินความเสี่ยง</span>
+          <span class="card-desc" data-i18n="riskDesc">ตอบ 22 ข้อ ใช้เวลา ~3 นาที</span>
+        </button>
+
+        <button id="btnStartGame" class="card">
+          <span class="card-title" data-i18n="gameSim">เกมจำลองสถานการณ์</span>
+          <span class="card-desc" data-i18n="gameDesc">ตอบคำถามสู้บอสสโตรก</span>
+        </button>
+      </div>
+
+      <div class="videoCard">
+        <div class="videoHeader" data-i18n="videoTitle">วิดีโอให้ความรู้สโตรก</div>
+        <div class="videoPlaceholder" aria-label="video placeholder">▶</div>
+        <p class="small muted" data-i18n="videoNote">
+          (ใส่วิดีโอลงที่นี่ภายหลังได้)
+        </p>
+      </div>
+    </section>
+
+    <!-- Risk Assessment -->
+    <section id="screen-risk" class="screen">
+      <div class="topbar">
+        <button class="link" data-nav="menu" data-i18n="back">← กลับ</button>
+        <div class="progress"><div id="riskProgress"></div></div>
+        <div class="lang-switch">
+          <select id="langSelectRisk">
+            <option value="th">ไทย</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="qa">
+        <h2 id="riskQuestion">Q</h2>
+        <div id="riskChoices" class="stack"></div>
+      </div>
+
+      <div class="footer-actions">
+        <button id="riskPrev" class="btn ghost" data-i18n="prev">ย้อนกลับ</button>
+        <button id="riskNext" class="btn" data-i18n="next">ถัดไป</button>
+      </div>
+    </section>
+
+    <!-- Risk Result -->
+    <section id="screen-risk-result" class="screen">
+      <div class="resultCard">
+        <h2 data-i18n="riskResultTitle">ผลการประเมินความเสี่ยง</h2>
+        <div class="resultNumber"><span id="riskScorePct">0%</span></div>
+        <div id="riskLevelBadge" class="badge">Low</div>
+        <p id="riskAdvice" class="advice">...</p>
+      </div>
+      <div class="footer-actions">
+        <button class="btn ghost" data-nav="risk" data-i18n="retake">ทำใหม่อีกครั้ง</button>
+        <button class="btn" data-nav="menu" data-i18n="backToMenu">กลับเมนู</button>
+      </div>
+      <p class="legal small muted" data-i18n="disclaimer">
+        * ผลประเมินนี้เพื่อการให้ความรู้ ไม่ใช่การวินิจฉัยทางการแพทย์ หากมีอาการฉุกเฉิน โทร 1669/112 หรือไปโรงพยาบาลทันที
+      </p>
+    </section>
+
+    <!-- Game -->
+    <section id="screen-game" class="screen">
+      <div class="topbar">
+        <button class="link" data-nav="menu" data-i18n="quitGame">← ออกจากเกม</button>
+        <div class="timer" aria-live="polite">
+          ⏱ <span id="gameTime">60</span>s
+        </div>
+        <div class="lang-switch">
+          <select id="langSelectGame">
+            <option value="th">ไทย</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="hud">
+        <div class="entity">
+          <div class="avatar">🧑‍⚕️</div>
+          <div class="bar"><div id="hpPlayer" class="barFill"></div></div>
+          <div class="hpText" id="hpPlayerText">100/100</div>
+        </div>
+        <div class="entity">
+          <div class="avatar">👹</div>
+          <div class="bar danger"><div id="hpBoss" class="barFill"></div></div>
+          <div class="hpText" id="hpBossText">150/150</div>
+        </div>
+      </div>
+
+      <div class="qa">
+        <h2 id="gameQuestion">Q</h2>
+        <div id="gameChoices" class="stack"></div>
+      </div>
+    </section>
+
+    <!-- Game Over -->
+    <section id="screen-game-over" class="screen">
+      <div class="resultCard">
+        <h2 id="gameOverTitle">Game Over</h2>
+        <p id="gameOverMsg">...</p>
+      </div>
+      <div class="footer-actions">
+        <button class="btn ghost" data-nav="game" data-i18n="playAgain">เล่นอีกครั้ง</button>
+        <button class="btn" data-nav="menu" data-i18n="backToMenu">กลับเมนู</button>
+      </div>
+    </section>
+
+  </div>
+  <script src="app33.js"></script>
+</body>
+</html>
